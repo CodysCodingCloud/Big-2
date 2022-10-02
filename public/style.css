@@ -1,11 +1,160 @@
-div {
-	width: 100px;
-	height: 100px;
-	background-color: blue;
+* {
+  margin: 0;
+  padding: 0;
 }
-.rotate {
-	background-color: blue;
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #003b6f;
+  color: white;
 }
-.rotate2 {
-	background-color: red;
+.flexrow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.flexcolumn {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+#app {
+  height: 95vh;
+  width: 95vw;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+.header {
+  width: 100%;
+  padding: 12px;
+}
+.header .bar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .bar .user-bar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+}
+.header .bar .user-bar > div {
+  margin-right: 1rem;
+}
+main {
+  flex: 1 0 80%;
+  max-height: 90vh;
+}
+#play {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  height: 100%;
+  max-height: 100%;
+}
+#mainArea {
+  height: 100%;
+  flex: 1 0 60%;
+}
+#sideBar {
+  flex: 1 0 auto;
+  max-width: 38%;
+  box-sizing: border-box;
+  border: 3px #0056a2 solid;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  height: 100%;
+  max-height: 100%;
+  justify-content: space-between;
+}
+#sideBar h1 {
+  justify-self: flex-start;
+}
+#sideBar .chat {
+  box-sizing: border-box;
+  flex: 1 0 70%;
+  width: 90%;
+  margin: 0 auto;
+  flex-basis: 1;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  max-height: 100%;
+  overflow-y: auto;
+}
+#sideBar .chat #bottomRef {
+  visibility: hidden;
+}
+#sideBar form {
+  justify-self: flex-end;
+}
+.profile {
+  background-color: #003b6f;
+}
+.logout {
+  padding: 5px 10px;
+}
+#main-area {
+  flex: 3 0 60%;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  border: 3px #004989;
+  display: flex;
+  flex-direction: column;
+}
+.message {
+  position: relative;
+  text-align: start;
+  padding: 0.2rem 0.4rem;
+  border: 0px 1px 1px 1px solid #33a0ff;
+}
+.message:nth-child(even) {
+  background-color: #0056a2;
+}
+.message:nth-child(odd) {
+  background-color: #004989;
+}
+.message .userName {
+  font-size: 0.8rem;
+  font-weight: 400;
+  margin-bottom: 0.2rem;
+}
+.message .message-content {
+  margin-left: 2rem;
+}
+.message .datetime {
+  position: absolute;
+  font-size: 0.5rem;
+  top: 2px;
+  right: 2px;
+}
+.message-textarea {
+  position: relative;
+}
+.message-textarea textarea {
+  box-sizing: border-box;
+  padding: 8px;
+  background-color: #0056a2;
+  color: white;
+  width: 100%;
+  height: 3rem;
+}
+.message-textarea button {
+  background-color: #33a0ff;
+  color: #003b6f;
+  border-radius: 50%;
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  bottom: 8px;
+  right: 8px;
+  font-weight: 800;
 }

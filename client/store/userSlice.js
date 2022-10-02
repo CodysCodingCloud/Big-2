@@ -21,25 +21,27 @@ const authSlice = createSlice({
 });
 export default authSlice.reducer;
 export const { _login, _LOGOUT } = authSlice.actions;
-export const attemptTokenLogin = () => async (dispatch) => {
+export const attemptTokenLogin = (navigate) => async (dispatch) => {
 	const token = window.localStorage.getItem("token");
 	if (token) {
-		const response = await axios.get("/api/auth", {
+		const { data: response } = await axios.get("/api/auth", {
 			headers: {
 				authorization: token,
 			},
 		});
 		console.log("run", response);
-		dispatch(_login(response.data));
+		dispatch(_login(response));
+		navigate("/play");
 	}
 };
-export const attemptPasswordLogin = (loginInfo) => async (dispatch) => {
-	console.log("slice", loginInfo);
-	const response = await axios.post("/api/auth/login", loginInfo);
-	const { token } = response.data;
-	window.localStorage.setItem("token", token);
-	attemptTokenLogin()(dispatch);
-};
+export const attemptPasswordLogin =
+	(loginInfo, navigate) => async (dispatch) => {
+		console.log("slice", loginInfo);
+		const response = await axios.post("/api/auth/login", loginInfo);
+		const { token } = response.data;
+		window.localStorage.setItem("token", token);
+		attemptTokenLogin(navigate)(dispatch);
+	};
 export const _logout = () => async (dispatch) => {
 	console.log("loggingout");
 	dispatch(_LOGOUT());

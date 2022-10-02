@@ -49,12 +49,15 @@ const User = db.define("user", {
 	},
 });
 module.exports = User;
-User.authenticate = async function ({ email, password }) {
-	const user = await User.findOne({ where: { email: { [Op.ilike]: email } } });
+User.authenticate = async function ({ username, password }) {
+	console.log("att", { username, password });
+	const user = await User.findOne({
+		where: { username: { [Op.iLike]: username } },
+	});
 	if (user) {
 		let match = await bcrypt.compare(password, user.password);
 		if (match) {
-			const token = await jwt.sign({ userId: user.id }, process.env.JWT);
+			const token = await jwt.sign({ userId: user.id }, JWT);
 			return token;
 		}
 	}

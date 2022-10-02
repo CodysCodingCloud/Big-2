@@ -13,6 +13,7 @@ async function init() {
 	}
 	const httpServer = http.createServer(app);
 	const io = new Server(httpServer, {});
+	require("./socketserver")(io);
 	httpServer.listen(port, () => {
 		console.log(`app is listenting on http://localhost:${port}\n`);
 	});
