@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import PlayerDisplayBar from "./components/PlayerDisplayBar";
 import Play from "./components/Play";
 import RerouteHome from "./components/RerouteHome";
+import Signup from "./components/Signup";
 export default function App() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -25,6 +26,7 @@ export default function App() {
 			<main>
 				<Routes>
 					<Route index element={<Login />} />
+					<Route path="/signup" element={<Signup />} />
 					<Route path="/play" element={<Play />} />
 					<Route path="*" element={<RerouteHome />} />
 				</Routes>

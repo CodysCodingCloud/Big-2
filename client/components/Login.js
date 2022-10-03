@@ -69,7 +69,7 @@ export default function Login() {
 					<button className="LoginBtn" type="submit">
 						Sign In
 					</button>
-					<Link to="/createaccount" className="create-account-link">
+					<Link to="/signup" className="create-account-link">
 						<button className="accountBtn">Create account?</button>
 					</Link>
 				</div>

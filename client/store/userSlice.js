@@ -45,3 +45,23 @@ export const _logout = () => async (dispatch) => {
 	console.log("loggingout");
 	dispatch(_LOGOUT());
 };
+export const signup = (newUser, navigate) => {
+	return async (dispatch) => {
+		try {
+			const { data: user } = await axios.post("/api/auth/signup", {
+				...newUser,
+			});
+			if (user) {
+				attemptPasswordLogin(
+					{
+						username: newUser.username,
+						password: newUser.password,
+					},
+					navigate
+				)(dispatch);
+			}
+		} catch (error) {
+			throw error;
+		}
+	};
+};
