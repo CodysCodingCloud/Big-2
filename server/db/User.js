@@ -4,7 +4,7 @@ const db = require("./db");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const JWT = process.env.JWT || "test";
-const SALT = process.env.SALT || 9;
+const SALT = Number(process.env.SALT) || 9;
 const User = db.define("user", {
 	username: {
 		type: Sequelize.STRING,
