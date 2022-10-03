@@ -2,7 +2,7 @@ const express = require("express");
 const app = require("./app");
 const http = require("http");
 const { Server } = require("socket.io");
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 const db = require("./db");
 async function init() {
 	try {
@@ -14,8 +14,8 @@ async function init() {
 	const httpServer = http.createServer(app);
 	const io = new Server(httpServer, {});
 	require("./socketserver")(io);
-	httpServer.listen(port, () => {
-		console.log(`app is listenting on http://localhost:${port}\n`);
+	httpServer.listen(PORT, () => {
+		console.log(`app is listenting on http://localhost:${PORT}\n`);
 	});
 }
 init();

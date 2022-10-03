@@ -17,6 +17,9 @@ body {
   flex-direction: column;
   flex-wrap: nowrap;
 }
+.fullwidth {
+  width: 100%;
+}
 #app {
   height: 95vh;
   width: 95vw;
@@ -26,6 +29,7 @@ body {
   flex-wrap: nowrap;
 }
 .header {
+  min-width: 0;
   width: 100%;
   padding: 12px;
 }
@@ -59,7 +63,9 @@ main {
 }
 #mainArea {
   height: 100%;
+  width: 100%;
   flex: 1 0 60%;
+  margin-right: 16px;
 }
 #sideBar {
   flex: 1 0 auto;
@@ -95,8 +101,55 @@ main {
 #sideBar form {
   justify-self: flex-end;
 }
+.roomRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  justify-content: space-between;
+}
+.roomRow h3 {
+  justify-self: flex-start;
+}
+.roomRow p {
+  justify-self: flex-end;
+}
+.roomRow button {
+  justify-self: flex-end;
+}
 .profile {
   background-color: #003b6f;
+}
+#table {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+#table .playbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  justify-content: space-between;
+}
+#table .playbar p {
+  font-size: 0.8rem;
+  justify-self: flex-start;
+}
+#table .playbar p #tableName {
+  font-size: 1.5rem;
+  color: #a6b8c7;
+}
+#table .playbar button {
+  justify-self: flex-end;
+}
+#table .playArea {
+  margin-top: 8px;
+  flex: 1 0 80%;
+  background-color: #004079;
 }
 .logout {
   padding: 5px 10px;
@@ -106,6 +159,7 @@ main {
   box-sizing: border-box;
   height: 100%;
   width: 100%;
+  min-width: 0;
   border: 3px #004989;
   display: flex;
   flex-direction: column;
@@ -145,6 +199,7 @@ main {
   background-color: #0056a2;
   color: white;
   width: 100%;
+  min-width: 0;
   height: 3rem;
 }
 .message-textarea button {
@@ -157,4 +212,28 @@ main {
   bottom: 8px;
   right: 8px;
   font-weight: 800;
+}
+.buttonError {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  perspective: 1000px;
+}
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }

@@ -19,6 +19,9 @@ body {
 	flex-direction: column;
 	flex-wrap: nowrap;
 }
+.fullwidth {
+	width: 100%;
+}
 #app {
 	height: 95vh;
 	width: 95vw;
@@ -26,7 +29,8 @@ body {
 	.flexcolumn();
 }
 .header {
-	width: 100%;
+	min-width: 0;
+	.fullwidth();
 	padding: 12px;
 	.bar {
 		.flexrow();
@@ -54,7 +58,9 @@ main {
 }
 #mainArea {
 	height: 100%;
+	.fullwidth();
 	flex: 1 0 60%;
+	margin-right: 16px;
 }
 #sideBar {
 	flex: 1 0 auto;
@@ -88,8 +94,51 @@ main {
 }
 .user-bar {
 }
+.roomRow {
+	.flexrow();
+	.fullwidth();
+	justify-content: space-between;
+	h3 {
+		justify-self: flex-start;
+	}
+	p {
+		justify-self: flex-end;
+	}
+	button {
+		justify-self: flex-end;
+	}
+}
 .profile {
 	background-color: @primary-color;
+}
+#table {
+	height: 100%;
+	.fullwidth();
+	.flexcolumn();
+	justify-content: space-between;
+	.playbar {
+		.flexrow();
+		.fullwidth();
+		justify-content: space-between;
+		p {
+			font-size: 0.8rem;
+
+			justify-self: flex-start;
+			#tableName {
+				font-size: 1.5rem;
+
+				color: #a6b8c7;
+			}
+		}
+		button {
+			justify-self: flex-end;
+		}
+	}
+	.playArea {
+		margin-top: 8px;
+		flex: 1 0 80%;
+		background-color: lighten(@primary-color, 2%);
+	}
 }
 .logout {
 	padding: 5px 10px;
@@ -98,24 +147,12 @@ main {
 	flex: 3 0 60%;
 	box-sizing: border-box;
 	height: 100%;
-	width: 100%;
+	.fullwidth();
+	min-width: 0;
 	border: 3px lighten(@primary-color, 5%);
 	display: flex;
 	flex-direction: column;
 }
-// .chat {
-// 	justify-self: flex-start;
-// 	flex: 3 0 80%;
-// 	box-sizing: border-box;
-// 	width: 100%;
-// 	padding: 4px 8px;
-// 	margin: 0 auto;
-// 	list-style-type: none;
-// 	display: flex;
-// 	flex-direction: column;
-// 	justify-content: flex-start;
-// 	overflow: auto;
-// }
 .message {
 	position: relative;
 	text-align: start;
@@ -151,7 +188,8 @@ main {
 		padding: 8px;
 		background-color: lighten(@primary-color, 10%);
 		color: white;
-		width: 100%;
+		.fullwidth();
+		min-width: 0;
 		height: 3rem;
 	}
 	button {
@@ -164,5 +202,30 @@ main {
 		bottom: 8px;
 		right: 8px;
 		font-weight: 800;
+	}
+}
+.buttonError {
+	animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+	transform: translate3d(0, 0, 0);
+	perspective: 1000px;
+}
+
+@keyframes shake {
+	10%,
+	90% {
+		transform: translate3d(-1px, 0, 0);
+	}
+	20%,
+	80% {
+		transform: translate3d(2px, 0, 0);
+	}
+	30%,
+	50%,
+	70% {
+		transform: translate3d(-4px, 0, 0);
+	}
+	40%,
+	60% {
+		transform: translate3d(4px, 0, 0);
 	}
 }

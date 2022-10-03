@@ -3,7 +3,7 @@ import socket from "../socketclient";
 const axios = require("axios");
 const chatSlice = createSlice({
 	name: "chat",
-	initialState: { room: "lobby", messages: [] },
+	initialState: { room: { roomname: "lobby", roomid: "lobby" }, messages: [] },
 	reducers: {
 		_login: (state, action) => {
 			console.log("running");
@@ -15,6 +15,15 @@ const chatSlice = createSlice({
 			state = {};
 			return {};
 		},
+		joinroom: (state, action) => {
+			(state.room.roomname = action.payload.tableName),
+				(state.room.roomid = action.payload.tableid);
+			return state;
+		},
+		leaveroom: (state) => {
+			state.room = { roomname: "lobby", roomid: "lobby" };
+			return state;
+		},
 		_addMessage: (state, action) => {
 			console.log(action.payload.socketMsg.time);
 			action.payload.socketMsg.time =
@@ -24,17 +33,23 @@ const chatSlice = createSlice({
 			return state;
 		},
 		_clearMessages: (state) => {
-			state.room = "lobby";
+			state.room = { roomname: "lobby", roomid: "lobby" };
 			state.chat = [];
 			return state;
 		},
 	},
 });
 export default chatSlice.reducer;
-export const { _login, _LOGOUT, _addMessage, _clearMessages } =
-	chatSlice.actions;
+export const {
+	_login,
+	_LOGOUT,
+	_addMessage,
+	_clearMessages,
+	joinroom,
+	leaveroom,
+	joinTable,
+} = chatSlice.actions;
 export const _socketMessage = (messageObj) => async (dispatch) => {
-	console.log("slice", messageObj);
 	messageObj.socketMsg.time = new Date();
 	dispatch(_addMessage(messageObj));
 };

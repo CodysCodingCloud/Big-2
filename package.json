@@ -9,10 +9,15 @@
 		"server": "nodemon server",
 		"start-less": "less-watch-compiler",
 		"seed": "QUIET=true node server/seed.js",
+		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run build && npm run seed ",
 		"less": "less-watch-compiler"
 	},
-	"author": "cody",
+	"author": "cody chan",
 	"license": "MIT",
+	"engines": {
+		"node": "16.16.0",
+		"npm": "8.11.0"
+	},
 	"devDependencies": {
 		"@babel/core": "^7.19.3",
 		"@babel/preset-env": "^7.19.3",
@@ -42,6 +47,7 @@
 		"redux-logger": "^3.0.6",
 		"sequelize": "^6.23.2",
 		"socket.io": "^4.5.2",
-		"socket.io-client": "^4.5.2"
+		"socket.io-client": "^4.5.2",
+		"uuid4": "^2.0.3"
 	}
 }

@@ -7,7 +7,7 @@ export default function Sidebar() {
 	return (
 		<div id="sideBar">
 			<h3>Chat</h3>
-			<p>Room:{room}</p>
+			<p>Room:{room.roomname}</p>
 			<Chat />
 			<TextArea />
 		</div>

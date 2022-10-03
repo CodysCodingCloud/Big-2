@@ -6,9 +6,8 @@ const authSlice = createSlice({
 	initialState: {},
 	reducers: {
 		_login: (state, action) => {
-			console.log("running");
+			socket.emit("login", action.payload);
 			socket.emit("message", `${action.payload.username} logged in`);
-			socket.emit("joinRooms", action.payload.conversations);
 			state = action.payload;
 			return state;
 		},

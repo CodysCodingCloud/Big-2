@@ -7,7 +7,7 @@ export default function TextArea() {
 	// const [error, setError] = React.useState({});
 	const dispatch = useDispatch();
 	let username = useSelector((state) => state.user.username);
-	let room = useSelector((state) => state.chat.room);
+	let room = useSelector((state) => state.chat.room.roomid);
 
 	function handleChange(e) {
 		setMessage(e.target.value);
