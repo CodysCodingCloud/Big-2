@@ -4,7 +4,8 @@
 	"description": "Chinese Poker",
 	"main": "index.js",
 	"scripts": {
-		"start": "npm run build & npm run server",
+		"start": "npm run server",
+		"dev": "npm run build & npm run server",
 		"build": "webpack -w",
 		"server": "nodemon server",
 		"start-less": "less-watch-compiler",
